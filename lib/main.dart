@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning/appblocs.dart';
 import 'package:ulearning/appevents.dart';
 import 'package:ulearning/appstates.dart';
+import 'package:ulearning/pages/sign/sign_in.dart';
 import 'package:ulearning/pages/welcome/bloc/welcome.dart';
 import 'package:ulearning/pages/welcome/bloc/welcome_bloc.dart';
 
@@ -26,9 +27,16 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme:ThemeData(
+          appBarTheme: const AppBarTheme(
+            elevation: 0,
+            backgroundColor:Colors.white
+          )
+        ),
         home: const Welcome(),
         routes: {
           "myHomePage":(context)=>const MyHomePage(),
+          "signIn":(context)=> const SignIn(),
         }
       ) ),
     );
@@ -49,15 +57,7 @@ class MyHomePage extends StatelessWidget{
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const Text("Flutter Demo Home Page"),
-      ),
+      
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
