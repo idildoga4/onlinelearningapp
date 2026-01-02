@@ -119,7 +119,7 @@ class _WelcomeState extends State<Welcome> {
                           duration: const Duration(milliseconds: 500), 
                           curve: Curves.decelerate);
                       }else{
-                        Navigator.of(context).pushNamedAndRemoveUntil("myHomePage",(route)=>false);
+                        Navigator.of(context).pushNamedAndRemoveUntil("signIn",(route)=>false);
                       }
                     },
                     child: Container(
