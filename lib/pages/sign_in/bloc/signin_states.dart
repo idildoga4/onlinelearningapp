@@ -3,7 +3,8 @@ class SignInState{
   final String password;
 
   const SignInState({
-    this.email="", this.password=""
+    this.email="", 
+    this.password=""
   });
 
   SignInState copyWith({

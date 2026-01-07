@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning/appblocs.dart';
 import 'package:ulearning/appevents.dart';
 import 'package:ulearning/appstates.dart';
+import 'package:ulearning/pages/bloc_providers.dart';
+import 'package:ulearning/pages/register/register.dart';
 import 'package:ulearning/pages/sign_in/sign_in.dart';
 import 'package:ulearning/pages/welcome/bloc/welcome.dart';
-import 'package:ulearning/pages/welcome/bloc/welcome_bloc.dart';
+
 
 
 void main() {
@@ -20,22 +22,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
     
-    providers: [
-        BlocProvider(create: (context)=> WelcomeBloc()),
-        BlocProvider(create: (context)=>AppBlocs()),
-      ],
+    providers: AppBlocProviders.allBlocProviders,
       child: ScreenUtilInit(builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme:ThemeData(
           appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(
+              color: Colors.black
+            ),
             elevation: 0,
             backgroundColor:Colors.white
           )
         ),
         home: const Welcome(),
         routes: {
-          "myHomePage":(context)=>const MyHomePage(),
           "signIn":(context)=> const SignIn(),
+          "register":(context)=> const Register(),
         }
       ) ),
     );

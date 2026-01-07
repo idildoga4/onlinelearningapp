@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning/common/entities/colors.dart';
+import 'package:ulearning/pages/sign_in/bloc/sign_in_blocs.dart';
+import 'package:ulearning/pages/sign_in/bloc/sign_in_controller.dart';
+import 'package:ulearning/pages/sign_in/bloc/sign_in_evemts.dart';
+import 'package:ulearning/pages/sign_in/bloc/signin_states.dart';
 
-import 'widgets/sign_in_widget.dart';
+import '../common_widgets.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -17,12 +20,14 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BlocBuilder<SignInBloc,SignInState>(
+      builder: (context, state){
+        return Container(
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: buildAppBar(),
+          appBar: buildAppBar("Log In"),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,14 +42,25 @@ class _SignInState extends State<SignIn> {
                     children: [
                       reusableText("Email"),
                       SizedBox(height: 5.h,),
-                      buildTextField("Enter your email address", "email","user"),
+                      buildTextField("Enter your email address", "email","user",
+                      (value){
+                        context.read<SignInBloc>().add(EmailEvent(value));
+                      }),
                       reusableText("Password"),
                       SizedBox(height: 5.h,),
-                      buildTextField("Enter your password", "password","lock"),
+                      buildTextField("Enter your password", "password","lock",
+                      (value){
+                        context.read<SignInBloc>().add(PasswordEvent(value));
+                      }),
                       SizedBox(height: 20.h,),
                       forgotPassword(),
-                      buildLogInAndRegButton("Log In", "login"),
-                      buildLogInAndRegButton("Register", "register"),
+                      buildLogInAndRegButton("Log In", "login",(){
+                        SignInController(context:context).handleSignIn("email");
+
+                      }),
+                      buildLogInAndRegButton("Sign Up", "register",(){
+                        Navigator.of(context).pushNamed("register");
+                      }),
                     ],
                   ),
                 )
@@ -54,6 +70,8 @@ class _SignInState extends State<SignIn> {
     
         ),
       ),
+    );
+      }
     );
   }
 }

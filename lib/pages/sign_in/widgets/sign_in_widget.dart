@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildAppBar(){
+AppBar buildAppBar(String s){
   return AppBar(
 
             bottom: PreferredSize(preferredSize: const Size.fromHeight(1.0),
@@ -67,16 +64,17 @@ Widget reusableText(String text){
     )
   );
 }
-Widget buildTextField(String hintText, String textType,String iconName){
+Widget buildTextField(String hintText, String textType,String iconName, void Function(String value)? func
+){
   return Container(
-
     width: 325.w,
     height:50.w,
     margin:EdgeInsets.only(bottom:20.h),
+    padding: EdgeInsets.only(top: 0.h, bottom: 0.h),
     decoration: BoxDecoration(
       color:Colors.white,
       borderRadius: BorderRadius.all(Radius.circular(15.w)),
-      border:Border.all(color:Colors.black),
+      border:Border.all(color:const Color.fromARGB(101, 0, 0, 0)),
     ),
     child: Row(
       children: [
@@ -84,15 +82,19 @@ Widget buildTextField(String hintText, String textType,String iconName){
           width:16.w,
           height:16.w,
           margin:EdgeInsets.only(left:17.w),
-          child: Image.asset("assets/icons/user.png"),
+          child: Image.asset("assets/icons/$iconName.png"),
         ),
         SizedBox(
           width:270.w,
           height:50.w,
           child: TextField(
+            onChanged: (value)=>func!(value),
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               hintText: hintText,
+              border: const OutlineInputBorder(
+                borderSide:BorderSide(color: Colors.transparent)
+              ),
               enabledBorder:const OutlineInputBorder(
                 borderSide:BorderSide(
                 color:Colors.transparent,
@@ -151,11 +153,9 @@ Widget forgotPassword(){
   );
 }
 
-Widget buildLogInAndRegButton(String buttonName,String buttonType){
+Widget buildLogInAndRegButton(String buttonName,String buttonType, void Function()? func){
   return GestureDetector(
-    onTap:(){
-
-    },
+    onTap:() =>func,
     child: Container(
       width: 325.w,
       height: 50.h,
