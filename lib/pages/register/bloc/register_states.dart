@@ -3,7 +3,7 @@ class RegisterStates{
   final String email;
   final String password;
   final String rePassword;
-  const RegisterStates({required this.userName,required this.email,required this.password,required this.rePassword}); //{} makes parameters optional -optional named parameter-
+  const RegisterStates({this.userName='',this.email='',this.password='',this.rePassword=''}); //{} makes parameters named -optional named parameter-
   //with final and const, class becomes immutable. 
   RegisterStates copyWith(
   {
