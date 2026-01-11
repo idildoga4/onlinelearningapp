@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:ulearning/pages/sign_in/bloc/sign_in_controller.dart';
-import 'package:ulearning/pages/sign_in/bloc/sign_in_evemts.dart';
+import 'package:ulearning/pages/sign_in/bloc/sign_in_events.dart';
 import 'package:ulearning/pages/sign_in/bloc/signin_states.dart';
 
 import '../common_widgets.dart';
