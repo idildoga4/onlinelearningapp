@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulearning/common/values/constant.dart';
 import 'package:ulearning/common/widgets/flutter_toast.dart';
+import 'package:ulearning/global.dart';
 import 'package:ulearning/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -40,7 +42,12 @@ class SignInController {
             toastInfo(msg: "Verify your email");
             return;
           }
-
+          var user =credential.user;
+          if(user!=null){
+          print("user-exist");
+          Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
+          
+      }
         } on FirebaseAuthException catch (e) { 
          
           if (e.code == 'user-not-found') {
