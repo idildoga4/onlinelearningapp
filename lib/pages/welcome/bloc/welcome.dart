@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:ulearning/common/values/constant.dart';
+import 'package:ulearning/global.dart';
 import 'package:ulearning/pages/welcome/bloc/welcome_Events.dart';
 import 'package:ulearning/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ulearning/pages/welcome/bloc/welcome_states.dart';
@@ -119,7 +121,8 @@ class _WelcomeState extends State<Welcome> {
                           duration: const Duration(milliseconds: 500), 
                           curve: Curves.decelerate);
                       }else{
-                        Navigator.of(context).pushNamedAndRemoveUntil("signIn",(route)=>false);
+                        Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME,true);
+                        Navigator.of(context).pushNamedAndRemoveUntil("/sign_in",(route)=>false);
                       }
                     },
                     child: Container(

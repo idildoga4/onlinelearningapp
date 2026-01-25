@@ -30,8 +30,8 @@ class _RegisterState extends State<Register> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 40.h),
-                    padding: EdgeInsets.only(left: 25.w,right: 25.w),
+                    margin: EdgeInsets.only(top: 60.h),
+                    padding: EdgeInsets.only(left: 50.w, right: 50.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
