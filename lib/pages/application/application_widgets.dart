@@ -4,7 +4,7 @@ import 'package:ulearning/pages/home/home_page.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [
-    HomePage(),
+    const HomePage(),
     const Center(child: Text("Search")),
     const Center(child: Text("Course")),
     const Center(child: Text("Chat")),

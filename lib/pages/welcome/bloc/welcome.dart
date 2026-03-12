@@ -21,7 +21,7 @@ class Welcome extends StatelessWidget {
 }
 
 class _WelcomeView extends StatefulWidget {
-  const _WelcomeView({super.key});
+  const _WelcomeView();
 
   @override
   State<_WelcomeView> createState() => _WelcomeViewState();

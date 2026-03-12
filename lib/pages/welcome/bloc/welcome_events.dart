@@ -1,4 +1,6 @@
-class WelcomeEvent {
+ abstract class WelcomeEvent {}
+
+class WelcomePageChanged extends WelcomeEvent {
   final int page;
-  WelcomeEvent(this.page);
+  WelcomePageChanged(this.page);
 }

@@ -16,7 +16,7 @@ AppBar buildAppBar(){
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
         SizedBox(
-          child: Container(
+          child: SizedBox(
             width:15.w,
             height:12.h,
             child: Image.asset("assets/icons/menu.png"),
@@ -72,7 +72,7 @@ Widget searchView(){
               height:16.w,
               child: Image.asset("assets/,cons/search.png")),
             ),
-            Container(
+            SizedBox(
               width: 240.w,
               height: 40.h,
               child: TextField(
@@ -220,6 +220,8 @@ Widget menuView() {
           _reusableMenuText("All"),
           SizedBox(width: 10.w),
           _reusableMenuText("Popular"),
+          SizedBox(width: 10.w),
+          _reusableMenuText("Newest"),
         ],
       )
     ],
@@ -228,6 +230,7 @@ Widget menuView() {
 
 Widget _reusableSubTitleText(String text, {Color color= AppColors.textPrimary, int fontSize= 16}){
     return Container(
+
             child: Text(text,
             style: TextStyle(
             color: color,
@@ -237,9 +240,10 @@ Widget _reusableSubTitleText(String text, {Color color= AppColors.textPrimary, i
           );
 }
 
-Widget _reusableMenuText(String text){
+Widget _reusableMenuText(String text, {Color textColor= AppColors.dotInactive}){
   return Container(
-  decoration: BoxDecoration(
+    margin: EdgeInsets.only(right: 20.w),
+    decoration: BoxDecoration(
     color: AppColors.dotActive,
     borderRadius: BorderRadius.circular(7.w),
     border: Border.all(color: AppColors.dotActive),),

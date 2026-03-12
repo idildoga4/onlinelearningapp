@@ -17,15 +17,17 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SignInBloc,SignInState>(
-      builder: (context, state){
+    @override
+Widget build(BuildContext context) {
+  // 1. Buraya BlocProvider ekliyoruz
+  return BlocProvider(
+    create: (context) => SignInBloc(), 
+    child: BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, state) {
         return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
+          color: Colors.white,
+          child: SafeArea(
+            child: Scaffold(
           backgroundColor: Colors.white,
           appBar: buildAppBar("Log In"),
           body: SingleChildScrollView(
@@ -72,6 +74,6 @@ class _SignInState extends State<SignIn> {
       ),
     );
       }
-    );
+   ), );
   }
 }

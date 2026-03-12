@@ -66,7 +66,7 @@ class AppPages {
           {
             return MaterialPageRoute(builder: (_)=> const ApplicationPage(), settings:settings);
           }
-          return MaterialPageRoute(builder: (_)=>SignIn(),settings:settings);
+          return MaterialPageRoute(builder: (_)=>const SignIn(),settings:settings);
         }
         return MaterialPageRoute(
           builder: (_) => result.first.page!,

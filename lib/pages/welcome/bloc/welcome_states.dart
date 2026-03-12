@@ -1,4 +1,4 @@
 class WelcomeState{
-  int page; 
-  WelcomeState({this.page=0});
+  final int page; 
+  const WelcomeState({this.page=0});
 }
